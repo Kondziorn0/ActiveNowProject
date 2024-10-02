@@ -6,7 +6,7 @@ Celem projektu jest stworzenie podstawowego systemu zarządzania planem lekcyjny
 Narzędzia użyte w projekcie:
 
 Devise – system logowania
-Tailwind CSS – wygl;ąd
+Tailwind CSS – wygląd
 Hotwire/Turbo – interaktywność bez potrzeby pełnego odświeżania strony
 SQLite – baza danych
 RSpec – testy
