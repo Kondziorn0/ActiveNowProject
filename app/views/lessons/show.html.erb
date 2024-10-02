@@ -1,0 +1,26 @@
+<div class="flex items-center justify-center min-h-screen">
+  <div class="bg-white shadow-lg rounded-lg p-6 md:w-2/3 w-full">
+    <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-xl inline-block" id="notice"><%= notice %></p>
+    <% end %>
+
+    <div class="mb-4">
+      <h2 class="text-2xl font-bold text-gray-800 mb-2"><%= @lesson.title %></h2>
+      <p class="text-gray-600"><%= @lesson.description %></p>
+      <p class="text-sm text-gray-500"><%= "#{@lesson.start_time.strftime("%I:%M %p")} - #{ @lesson.end_time.strftime("%I:%M %p")}" %></p>
+      <p class="text-sm text-gray-500"><%= "#{@lesson.user.name} #{@lesson.user.surname}" if @lesson.user %></p>
+      <p class="text-sm text-gray-500"><%= @lesson.classroom.name if @lesson.classroom %></p>
+    </div>
+
+    <div class="flex justify-between mt-4">
+      <%= link_to "Back to lessons", lessons_path, class: "rounded-lg py-2 px-4 bg-gray-300 text-gray-800 font-medium hover:bg-gray-400 transition" %>
+
+      <% if current_user.teacher? || current_user.admin? %>
+        <div class="flex space-x-2">
+          <%= link_to "Edit this lesson", edit_lesson_path(@lesson), class: "rounded-lg py-2 px-4 bg-blue-600 text-white font-medium hover:bg-blue-700 transition" %>
+          <%= button_to "Destroy this lesson", @lesson, method: :delete, class: "rounded-lg py-2 px-4 bg-red-600 text-white font-medium hover:bg-red-700 transition" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

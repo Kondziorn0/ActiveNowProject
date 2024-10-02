@@ -1,0 +1,15 @@
+<aside class="w-64 bg-slate-900 h-screen fixed left-0 top-0 p-5 shadow-lg">
+  <nav>
+    <ul class="space-y-2">
+      <li><%= link_to "Home", root_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+      <li><%= link_to "Lessons", lessons_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+      <% if current_user.teacher? || current_user.admin? %>
+        <li><%= link_to "Schools", schools_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+        <li><%= link_to "Student Groups", student_groups_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+        <li><%= link_to "Classrooms", classrooms_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+        <li><%= link_to "Subjects", subjects_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+        <li><%= link_to "Users", users_path, class: "flex items-center text-blue-600 hover:text-blue-800" %></li>
+      <% end %>
+    </ul>
+  </nav>
+</aside>

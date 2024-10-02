@@ -1,0 +1,25 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Subjects" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Subjects</h1>
+    <% if current_user.admin? %>
+      <%= link_to "New subject", new_subject_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %>
+  </div>
+
+  <div id="subjects" class="min-w-full">
+    <% @subjects.each do |subject| %>
+      <div class="lesson-item bg-white shadow-md rounded-lg p-4 mb-4 transition-transform transform hover:scale-105">
+        <h2 class="text-lg font-semibold text-blue-800"><%= subject.name %></h2>
+        <p>
+          <%= link_to "Show this subject", subject, class: "mt-2 rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

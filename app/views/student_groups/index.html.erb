@@ -1,0 +1,26 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Student groups" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Student groups</h1>
+    <% if current_user.admin? %>
+      <%= link_to "New student group", new_student_group_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end%>
+  </div>
+
+  <div id="student_groups" class="min-w-full">
+    <% @student_groups.each do |student_group| %>
+      <div class="lesson-item bg-white shadow-md rounded-lg p-4 mb-4 transition-transform transform hover:scale-105">
+        <h2 class="text-lg font-semibold text-blue-800"><%= student_group.name %></h2>
+        <p class="text-gray-600"><%= student_group.school.name %></p>
+        <p>
+          <%= link_to "Show this student group", student_group, class: "mt-2 rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

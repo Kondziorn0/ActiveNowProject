@@ -1,0 +1,52 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="w-96 flex flex-row">
+    <%= week_calendar(number_of_weeks: 1, events: @lessons) do |date, lessons| %>
+      <div class="date-header text-sm font-semibold mb-2 text-center">
+        <%= date.strftime("%b %d") %>
+      </div>
+
+      <div class="lessons-container space-y-2 h-max w-48 px-2">
+        <% if lessons.any? %>
+          <% lessons.each do |lesson| %>
+            <%= link_to lesson, class: "lesson-item block p-2 rounded-lg bg-blue-100 hover:bg-blue-200 transition duration-300" do %>
+              <div class="text-blue-800 font-medium"><%= lesson.title %></div>
+              <div class="text-xs text-blue-600"><%= lesson.start_time.strftime("%I:%M %p") %></div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <div class="text-center text-gray-500 italic">No lessons</div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  </br>
+  <% content_for :title, "Lessons" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Lessons today</h1>
+    <% if current_user.teacher? || current_user.admin?%>
+      <%= link_to "New lesson", new_lesson_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <% end %>
+  </div>
+
+  <div id="lessons" class="min-w-full">
+    <% @lessons_today.each do |lesson| %>
+      <div class="lesson-item bg-white shadow-md rounded-lg p-4 mb-4 transition-transform transform hover:scale-105">
+        <h2 class="text-lg font-semibold text-blue-800"><%= lesson.title %></h2>
+        <p class="text-gray-600"><%= lesson.description %></p>
+        <p class="text-sm text-gray-500">
+          Start Time: <%= lesson.start_time.strftime("%I:%M %p") %> | 
+          End Time: <%= lesson.end_time.strftime("%I:%M %p") %>
+        </p>
+        <p>
+          <%= link_to "Show this lesson", lesson, class: "mt-2 rounded-lg py-2 px-4 bg-blue-600 text-white inline-block font-medium" %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
