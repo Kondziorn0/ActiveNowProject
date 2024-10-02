@@ -15,9 +15,8 @@ FactoryBot – generowanie danych testowych
 Projekt uruchamiany jest przy pomocy bin/dev. Nie zdążyłem stworzyć własnego pliku Dockerfile oraz docker-compose, ale projekt jest w pełni funkcjonalny bez nich.
 
 Użytkownicy mają swoje role i w zależności od tego jaką role mają taki posiadają poziom dostępu np:
-rola student pozwala tylko na edytowanie swojego hasła i maila oraz sprawdzenie planu lekcyjnego
-
-rola teacher pozwala na spojrzenie na więcej rzeczy takich jak grupy studentów, uczniowie nauczyciele przedmioty itd ale nie pozwala edytować
-rola administratora ma pełen dostęp do wszytkich fukcjnonalności
+ - Rola student pozwala tylko na edytowanie swojego hasła i maila oraz sprawdzenie planu lekcyjnego.
+ - Rola teacher pozwala na spojrzenie na więcej rzeczy takich jak grupy studentów, uczniowie nauczyciele przedmioty itd ale nie pozwala edytować.
+ - Rola administratora ma pełen dostęp do wszytkich fukcjnonalności.
 
 Warto zaznaczyć że użytkownik który się loguje ma podstawowo role studenta i nie ma dostępu do wszytkich fukcjnonalności
