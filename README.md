@@ -5,6 +5,7 @@ Celem projektu jest stworzenie podstawowego systemu zarządzania planem lekcyjny
 
 Narzędzia użyte w projekcie:
 
+Simplecalendar - funkcja kalendarza
 Devise – system logowania
 Tailwind CSS – wygląd
 Hotwire/Turbo – interaktywność bez potrzeby pełnego odświeżania strony
